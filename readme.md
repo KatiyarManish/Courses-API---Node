@@ -81,3 +81,27 @@ res.status(201).json({ name: "brad" });
 # export this module - module.exports=router
 
 ==============================================
+
+##### Controllers
+
+# create controller folder
+
+# create new file
+
+# we need to add methods & export it..it is like a middleware
+
+exports.getBootcamps = (req,res,next) => {
+res.status(200).send()
+}
+
+# create all methods then remove res.status.send line from server.js
+
+# go to routes.js and delete all routes and destructure/import methods from controller
+
+# use router.route("/").get(method).post(method)
+
+# use router.route("/:id").get(method).put(method).delete(method)
+
+==================================
+
+# use morgan - middlware - for logger

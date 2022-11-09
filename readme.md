@@ -61,3 +61,23 @@
 app.get("/", (req, res) => {
 res.status(201).json({ name: "brad" });
 });
+
+# create routes folder - Create new file
+
+# move all routes to routes folder
+
+# import express & Router package
+
+# replace App.get & others to router.get varaibles
+
+============================
+
+# in server.js - import route files & mount them
+
+# mount routers - app.use(path,router) --middleware
+
+# remove routes /api/v1/bootcamps from router file
+
+# export this module - module.exports=router
+
+==============================================

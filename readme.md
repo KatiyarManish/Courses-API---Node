@@ -105,3 +105,40 @@ res.status(200).send()
 ==================================
 
 # use morgan - middlware - for logger
+
+===================================
+
+# create new env in Postman
+
+# create a collection in postman and crrate folder and then save all routes below that folder
+
+===================================================
+
+###### DB config - altas or compass
+
+=================================================
+
+###### install Mongoose - used for object modelling
+
+# in config folder - create db.js
+
+# import Moongoose
+
+# create function to create DB with async await
+
+# in config.js - create Mongo_URI
+
+const connectDB = async () => {
+const conn = await mongoose.connect(process.env.MONGO_URI, {
+useNewUrlParser: true,
+useUnifiedTopology: true,
+});
+
+console.log(`MongoDB connected: ${conn.connection.host}`);
+};
+
+module.exports = connectDB;
+
+=======================================================
+
+# import in server.js

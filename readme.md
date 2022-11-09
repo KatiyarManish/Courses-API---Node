@@ -146,3 +146,22 @@ module.exports = connectDB;
 ===========================================
 
 # what if we pass wrong password of db..we can use try catch or create a global promise rejection handler in server.js
+
+# handle unhandled promise rejection
+
+```
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`the error is: ${err.message}`);
+  // close server & exit process
+  server.close(() => process.exit(1));
+});
+
+```
+
+=====================================
+
+# install colors package for console
+
+# console.log(`server is running on ${PORT}`.red.bold)
+
+===========================================

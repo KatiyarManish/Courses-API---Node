@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
+const colors = require("colors");
 
 // Load env var
 dotenv.config({ path: "./config/config.env" });
@@ -19,12 +20,16 @@ if (process.env.NODE_ENV === "development") {
 // import routes
 
 const bootcamps = require("./routes/routes.js");
+const req = require("express/lib/request.js");
 
 // dev logging middleware - Morgan
 app.use("/api/v1/bootcamps", bootcamps);
 
 // running app
-const server = app.listen(PORT, console.log("server is running"));
+const server = app.listen(
+  PORT,
+  console.log(`server is running on ${PORT}`.red.bold)
+);
 
 // handle unhandled promise rejection
 

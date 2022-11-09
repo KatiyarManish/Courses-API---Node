@@ -21,7 +21,15 @@ if (process.env.NODE_ENV === "development") {
 const bootcamps = require("./routes/routes.js");
 
 // dev logging middleware - Morgan
-
 app.use("/api/v1/bootcamps", bootcamps);
 
-app.listen(PORT, console.log("server is running"));
+// running app
+const server = app.listen(PORT, console.log("server is running"));
+
+// handle unhandled promise rejection
+
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`the error is: ${err.message}`);
+  // close server & exit process
+  server.close(() => process.exit(1));
+});

@@ -141,4 +141,8 @@ module.exports = connectDB;
 
 =======================================================
 
-# import in server.js
+# import in server.js and call this method
+
+===========================================
+
+# what if we pass wrong password of db..we can use try catch or create a global promise rejection handler in server.js

@@ -165,3 +165,51 @@ process.on("unhandledRejection", (err, promise) => {
 # console.log(`server is running on ${PORT}`.red.bold)
 
 ===========================================
+
+###### Create first model
+
+# import mongoose
+
+# create fields
+
+# slug fields, validations ,
+
+# GeoJson libabry for longitude/lattitude
+
+# create all the fields module.exports = mongoose.models("Courses",<PassSchema>)
+
+==========================================================================
+
+## Crud functionality on one Schema
+
+# in controller.js file - import models
+
+# in order to use req.body during post request, we need body parser middleware
+
+# app.use(express.json())
+
+# 1- Create data in db
+
+```
+exports.createBootcamp = async (req, res, next) => {
+  const bootcamp = await Bootcamp.create(req.body);
+  res.status(201).json({ success: true, data: bootcamp });
+};
+
+```
+
+# we cant crrate same name or email ids in DB as these may be unique so we need to add entire code in try catch block. later we will create custom error handler. we will also use a middleware later on so we don't need to wrap our code in try catch block
+
+```
+exports.createBootcamp = async (req, res, next) => {
+  try {
+    const bootcamp = await Bootcamp.create(req.body);
+    res.status(201).json({ success: true, data: bootcamp });
+  } catch (error) {
+    res.status(400).send({ success: false });
+  }
+};
+
+```
+
+#

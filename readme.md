@@ -351,3 +351,33 @@ next(
 new errorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
 
 ============================================================
+
+# we will now remove errorResponse from here and move it to error.js
+
+## IMP handle all in error.js -- then use errorResponse class -- then use next() in controller.js
+
+## IMP we can handle errors using express validators (Brad Mern) or mongoose (Brad Node)
+
+=====================================
+
+## code cleanup with Async await in express middleware
+
+# create another file called asyncHandler and write method - and import it on controller.js
+
+===================================
+
+# Mongoose middleware and slugify
+
+# mongoose middleware ..also called as pre and post hooks in mongoose
+
+# npm i slugify
+
+# import in models - bootcamp.js
+
+```
+BootcampSchema.pre("save", function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+```

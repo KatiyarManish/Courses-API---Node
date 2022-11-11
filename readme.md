@@ -212,4 +212,142 @@ exports.createBootcamp = async (req, res, next) => {
 
 ```
 
-#
+# Get All data
+
+```
+exports.getBootcamps = async (req, res, next) => {
+  try {
+    const bootcamps = await Bootcamp.find();
+    res.status(200).json({ success: true, data: bootcamps });
+  } catch (error) {
+    res.status(400).json({ success: false });
+  }
+};
+
+```
+
+# get single record
+
+```
+exports.getBootcamp = async (req, res, next) => {
+  try {
+    const bootcampbyid = await Bootcamp.findById(req.params.id);
+    res.status(200).send({ success: true, data: bootcampbyid });
+  } catch (error) {
+    res.status(400).send({ success: false });
+  }
+};
+
+```
+
+# Update
+
+```
+exports.updateBootcamp = async (req, res, next) => {
+  const bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  if (!bootcamp) {
+    res.status(400).json({ success: false });
+  }
+  res.status(200).json({ success: true, data: bootcamp });
+};
+
+```
+
+# delete
+
+```
+exports.deleteBootcamp = async (req, res, next) => {
+  const bootcamp = await Bootcamp.findByIdAndDelete(req.params.id);
+  if (!bootcamp) {
+    res.status(400).json({ success: false });
+  }
+  res.status(200).json({ success: true, data: { msg: "deleted" } });
+};
+
+```
+
+============================================================
+
+## Error Handling using express
+
+# craete middleware folder and error.js file
+
+# in this , create a middleware
+
+```
+const errorHandler = (err, req, res, next) => {
+  // console log for dev help
+  console.log(err.stack);
+
+  res.status(500).json({
+    success: false,
+    error: err.message,
+  });
+};
+
+module.exports = errorHandler;
+
+```
+
+# note that each middleware can be run by App.use()
+
+# add app.use(errorHandler) in server.js
+
+# controller.js - add in catch block - next(error)
+
+```
+exports.getBootcamp = async (req, res, next) => {
+ try {
+   const bootcampbyid = await Bootcamp.findById(req.params.id);
+   if (!bootcampbyid) {
+     return res.status(400).json({ success: false });
+   }
+   res.status(200).json({ success: true, data: bootcampbyid });
+ } catch (error) {
+   next(error);
+ }
+};
+
+```
+
+===============================================
+
+# Custom Error response class - create utils folder - create errorResponse file
+
+```
+class errorResponse extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.statusCode = statusCode;
+  }
+}
+
+module.exports = errorResponse;
+```
+
+# chnage error.js
+
+```
+const errorHandler = (err, req, res, next) => {
+  // console log for dev help
+  console.log(err.stack);
+
+  res.status(err.statusCode || 500).json({
+    success: false,
+    error: err.message || "Sever Error",
+  });
+};
+
+module.exports = errorHandler;
+
+```
+
+# in Controller.js - add in all methods accoridng to need
+
+next(
+new errorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
+
+============================================================

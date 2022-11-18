@@ -384,10 +384,14 @@ BootcampSchema.pre("save", function (next) {
 
 =====================
 
-# developer.mapquest.com
+# developer.mapquest.com - GeoJson location & geocoder Hook
 
 # create account
 
 # create key
 
 # npm i node-geocoder
+
+# save key in .env file
+
+# utils - geocoder.js - create method and export

@@ -395,3 +395,20 @@ BootcampSchema.pre("save", function (next) {
 # save key in .env file
 
 # utils - geocoder.js - create method and export
+
+====================================================
+
+# database seeder
+
+- to load bulk data
+- create seeder.js
+- import packages
+- load env var
+- load models
+- connect DB
+- read json file
+- import into DB
+- delete db
+- if else (import or delete)
+
+==================================================

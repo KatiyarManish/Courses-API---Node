@@ -412,3 +412,40 @@ BootcampSchema.pre("save", function (next) {
 - if else (import or delete)
 
 ==================================================
+
+# Bootcamp by radios
+
+- controller.js - write logic
+- in route - create this route
+
+==========================================
+
+# filtering
+
+- req.query returns whatever you pass in URL
+- in controller.js - setup logic
+- in lte,lt, gte, gt
+
+======================================
+
+# Select / Sorting
+
+-
+
+========================================
+
+# pagination
+
+-
+
+========================================
+
+# COURSE MODEL
+
+- models - create courseModel.js
+- create model
+- put it in seeder for bulk insert
+
+========================================
+
+# course Route & controller

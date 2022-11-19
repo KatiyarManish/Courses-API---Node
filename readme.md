@@ -449,3 +449,14 @@ BootcampSchema.pre("save", function (next) {
 ========================================
 
 # course Route & controller
+
+- create controller.js - courses.js
+- create all methods in courses.js
+- under routes - create courses.js
+- after routes - in server.js - create routes
+
+==================================
+
+# populate, virtuals , cascade delete
+
+-

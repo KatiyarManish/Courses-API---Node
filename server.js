@@ -24,10 +24,12 @@ app.use(express.json());
 // import routes
 
 const bootcamps = require("./routes/routes.js");
+const courses = require("./routes/courses.js");
 const req = require("express/lib/request.js");
 
 // dev logging middleware - Morgan
 app.use("/api/v1/bootcamps", bootcamps);
+app.use("/api/v1/courses", courses);
 
 // Error handler
 
